@@ -11,12 +11,12 @@
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   ws.onopen = function(){
     console.log("ws opened");
+    setInterval(function() {
+      if (ws.bufferedAmount == 0){
+        createAndSendJSON(ws);
+      }
+    }, 50);
   }
-  setInterval(function() {
-    if (ws.bufferedAmount == 0){
-      createAndSendJSON(ws);
-    }
-  }, 50);
 
   ws.onmessage = function(message){
     // console.log("incoming message ",message);
