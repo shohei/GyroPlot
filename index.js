@@ -10,6 +10,7 @@
     timerId = setInterval(function(){
       ws.send(JSON.stringify(gyrojson)); 
     },30);
+    console.log(timerId);
   }
 
   ws.onmessage = function(message){
