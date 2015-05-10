@@ -45,19 +45,16 @@
   // };
 
 
-  window.addEventListener('focus', function() {
-    console.log('focused');
-    // document.title = 'focused';
-  });
-
-  window.addEventListener('blur', function() {
-    console.log('blured');
+document.addEventListener('webkitvisibilitychange', function(){
+  if ( document.webkitHidden ) {
     ws.onclose(); // WebSocket close
     console.log("clear timer");
     clearInterval(timerId);
     ws_is_connected=false;
-  });
-
+  } else {
+    // 表示状態
+  }
+}, false);
 
   var $zo;
   $(function() {
