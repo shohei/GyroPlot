@@ -25,7 +25,7 @@
   }
 
   $(window).unload(function() {
-    ws.close(); // WebSocket close
+    ws.onclose(); // WebSocket close
     clearInterval(timerId);
     ws_is_connected=false;
   });
