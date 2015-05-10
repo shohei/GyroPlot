@@ -4,22 +4,25 @@
   gamma=0;
 
   var createJSON  = function(){
-     var json = {'beta':beta,'gamma':gamma,'alpha':alpha};
-     return json;  
+    var json = {'beta':beta,'gamma':gamma,'alpha':alpha};
+    return json;  
+  }
+
+  var sendJSON = function(ws){
+    var gyrojson = createJSON();
+    console.log("gyrojson ",JSON.stringify(gyrojson));
+    if (ws.bufferedAmount == 0){
+      ws.send(JSON.stringify(gyrojson));
+    } 
+    setTimeout(function(){
+      sendJSON();
+    },100);
   }
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   ws.onopen = function(){
     console.log("ws opened");
-    setInterval(function() {
-      var gyrojson = createJSON();
-      console.log("gyrojson ",JSON.stringify(gyrojson));
-      if (ws.bufferedAmount == 0){
-        console("sending: "+JSON.stringify(gyrojson));
-        ws.send(JSON.stringify(gyrojson));
-      } else {
-        console.log('json null');
-    }, 100);
+    sendJSON(ws);
   }
 
   ws.onmessage = function(message){
