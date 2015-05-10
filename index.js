@@ -24,36 +24,21 @@
     ws_is_connected=false;
   }
 
-  // $(window).unload(function() {
-  //   ws.onclose(); // WebSocket close
-  //   console.log("clear timer");
-  //   clearInterval(timerId);
-  //   ws_is_connected=false;
-  // });
-
-  // $(window).on('beforeunload', function() {
-  //   ws.onclose(); // WebSocket close
-  //   console.log("clear timer");
-  //   clearInterval(timerId);
-  //   ws_is_connected=false;
-  // });
-
-  // window.onunload = window.onbeforeunload = function() {
-  //   ws.onclose(); // WebSocket close
-  //   console.log("clear timer");
-  //   clearInterval(timerId);
-  //   ws_is_connected=false;
-  // };
 
 
 document.addEventListener('webkitvisibilitychange', function(){
   if ( document.webkitHidden ) {
-    ws.onclose(); // WebSocket close
     console.log("clear timer");
     clearInterval(timerId);
     ws_is_connected=false;
   } else {
     // 表示状態
+    console.log("set timer");
+    timerId = setInterval(function(){
+      ws.send(JSON.stringify(gyrojson)); 
+    },30);
+    console.log(timerId);
+    ws_is_connected=true;
   }
 }, false);
 
