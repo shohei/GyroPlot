@@ -1,7 +1,7 @@
 (function() {
-  var alpha=0;
-  var beta=0;
-  var gamma=0;
+  alpha=0;
+  beta=0;
+  gamma=0;
 
   var createJSON  = function(){
      return {'beta':beta,'gamma':gamma,'alpha':alpha};
