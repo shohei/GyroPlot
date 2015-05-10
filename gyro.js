@@ -2,10 +2,11 @@
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   var ws_is_connected=false;
+  var timerId;
   ws.onopen = function(){
     console.log("ws opened");
     ws_is_connected=true;
-    setInterval(function(){
+    timerId = setInterval(function(){
       ws.send(JSON.stringify(gyrojson)); 
     },30);
   }
@@ -23,6 +24,7 @@
 
   $(window).unload(function() {
     ws.close(); // WebSocket close
+    clearInterval(timerId);
     ws_is_connected=false;
   });
 
@@ -45,9 +47,6 @@
     // Z軸
     var alpha = event.alpha;
     gyrojson = {'alpha':alpha,'beta':beta,'gamma':gamma};
-    if(ws_is_connected && ws.bufferedAmount ==0){
-      // ws.send(JSON.stringify({'alpha':alpha,'beta':beta,'gamma':gamma}));
-    };
     var html = "";
     html += "X回転 : " + beta + "<br>";
     html += "Y回転 : " + gamma + "<br>";
