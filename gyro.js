@@ -1,9 +1,24 @@
 (function() {
+  var alpha=0;
+  var beta=0;
+  var gamma=0;
+
+  var createAndSendJSON  = function(ws){
+    var gyrojson = {'beta':beta,'gamma':gamma,'alpha':alpha};
+    ws.send(JSON.stringify(gyrojson));
+  }
+
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   ws.onopen = function(){
     console.log("ws opened");
   }
+  setInterval(function() {
+    if (socket.bufferedAmount == 0){
+      createAndSendJSON(ws);
+    }
+  }, 50);
+
   ws.onmessage = function(message){
     // console.log("incoming message ",message);
   }
@@ -31,18 +46,15 @@
   function deviceorientationHandler(event) {
     //ジャイロセンサー情報取得
     // X軸
-    var beta = event.beta;
+    beta = event.beta;
     // Y軸
-    var gamma = event.gamma;
+    gamma = event.gamma;
     // Z軸
-    var alpha = event.alpha;
+    alpha = event.alpha;
     var html = "";
     html += "X回転 : " + beta + "<br>";
     html += "Y回転 : " + gamma + "<br>";
     html += 'Z回転 : ' + alpha;
-    gyrojson = {'beta':beta,'gamma':gamma,'alpha':alpha};
-    html += 'JSON: ' + JSON.stringify(gyrojson) + '<br>';
-    ws.send(JSON.stringify(gyrojson));
     $("#debug").html(html);
     $zo.css({
       "-webkit-transform": "rotateX(" + (180 + beta) + "deg) rotateY(" + (180 + gamma) + "deg) rotateZ(" + alpha + "deg)",
