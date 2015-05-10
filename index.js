@@ -42,6 +42,7 @@
     html += "Y回転 : " + gamma + "<br>";
     html += 'Z回転 : ' + alpha;
     gyrojson = {'beta':beta,'gamma':gamma,'alpha':alpha};
+    html += 'JSON: ' + JSON.stringify(gyrojson) + '<br>';
     ws.send(JSON.stringify(gyrojson));
     $("#debug").html(html);
     $zo.css({
