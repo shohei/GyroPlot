@@ -7,11 +7,8 @@
     console.log("ws opened");
     ws_is_connected=true;
     setInterval(function(){
-      // console.log(JSON.stringify(gyrojson)); 
       ws.send(JSON.stringify(gyrojson)); 
-      // console.log('hello');
-    },100);
-    // sendJSON(ws);
+    },30);
   }
 
   ws.onmessage = function(message){
