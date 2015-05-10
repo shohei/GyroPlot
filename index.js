@@ -1,25 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function() {
-  // alpha=0;
-  // beta=0;
-  // gamma=0;
-
-  // var createJSON  = function(){
-  //   var json = {'beta':beta,'gamma':gamma,'alpha':alpha};
-  //   return json;  
-  // }
-  //
-  // var sendJSON = function(ws){
-  //   var gyrojson = createJSON();
-  //   console.log("gyrojson ",JSON.stringify(gyrojson));
-  //   console.log("ws.bufferedAmount: ",ws.bufferedAmount);
-  //   if (ws.bufferedAmount == 0){
-  //     ws.send(JSON.stringify(gyrojson));
-  //   } 
-  //   setTimeout(function(){
-  //     sendJSON();
-  //   },100);
-  // }
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   var ws_is_connected=false;
@@ -30,7 +10,7 @@
       // console.log(JSON.stringify(gyrojson)); 
       ws.send(JSON.stringify(gyrojson)); 
       // console.log('hello');
-    },1000);
+    },100);
     // sendJSON(ws);
   }
 

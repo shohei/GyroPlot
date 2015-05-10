@@ -1,24 +1,4 @@
 (function() {
-  // alpha=0;
-  // beta=0;
-  // gamma=0;
-
-  // var createJSON  = function(){
-  //   var json = {'beta':beta,'gamma':gamma,'alpha':alpha};
-  //   return json;  
-  // }
-  //
-  // var sendJSON = function(ws){
-  //   var gyrojson = createJSON();
-  //   console.log("gyrojson ",JSON.stringify(gyrojson));
-  //   console.log("ws.bufferedAmount: ",ws.bufferedAmount);
-  //   if (ws.bufferedAmount == 0){
-  //     ws.send(JSON.stringify(gyrojson));
-  //   } 
-  //   setTimeout(function(){
-  //     sendJSON();
-  //   },100);
-  // }
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   var ws_is_connected=false;
@@ -29,7 +9,7 @@
       // console.log(JSON.stringify(gyrojson)); 
       ws.send(JSON.stringify(gyrojson)); 
       // console.log('hello');
-    },1000);
+    },100);
     // sendJSON(ws);
   }
 
