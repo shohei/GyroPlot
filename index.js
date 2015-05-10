@@ -31,12 +31,12 @@
   //   ws_is_connected=false;
   // });
 
-  $(window).on('beforeunload', function() {
-    ws.onclose(); // WebSocket close
-    console.log("clear timer");
-    clearInterval(timerId);
-    ws_is_connected=false;
-  });
+  // $(window).on('beforeunload', function() {
+  //   ws.onclose(); // WebSocket close
+  //   console.log("clear timer");
+  //   clearInterval(timerId);
+  //   ws_is_connected=false;
+  // });
 
   // window.onunload = window.onbeforeunload = function() {
   //   ws.onclose(); // WebSocket close
@@ -44,6 +44,19 @@
   //   clearInterval(timerId);
   //   ws_is_connected=false;
   // };
+
+
+  window.addEventListener('focus', function() {
+    // document.title = 'focused';
+  });
+
+  window.addEventListener('blur', function() {
+    ws.onclose(); // WebSocket close
+    console.log("clear timer");
+    clearInterval(timerId);
+    ws_is_connected=false;
+  });
+
 
   var $zo;
   $(function() {
