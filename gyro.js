@@ -34,7 +34,7 @@
   }
 
   ws.onmessage = function(message){
-    // console.log("incoming message ",JSON.parse(message));
+    console.log("incoming message ",JSON.parse(message));
   }
   ws.onerror = function(){
     console.log("ws error");
