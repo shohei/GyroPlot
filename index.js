@@ -28,14 +28,14 @@
     ws_is_connected=true;
     setInterval(function(){
       console.log(JSON.stringify(gyrojson)); 
-      // ws.send(JSON.stringify(gyrojson)); 
+      ws.send(JSON.stringify(gyrojson)); 
       // console.log('hello');
-    },1000);
+    },100);
     // sendJSON(ws);
   }
 
   ws.onmessage = function(message){
-    console.log("incoming message ",JSON.parse(message));
+    // console.log("incoming message ",JSON.parse(message));
   }
   ws.onerror = function(){
     console.log("ws error");
