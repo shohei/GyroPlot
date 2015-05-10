@@ -88,6 +88,7 @@
 
 },{}],2:[function(require,module,exports){
 (function() {
+  console.log("hogehoge");
   var $zo;
   $(function() {
     $zo = $("#zo");

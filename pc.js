@@ -1,4 +1,5 @@
 (function() {
+  console.log("hogehoge");
   var $zo;
   $(function() {
     $zo = $("#zo");
