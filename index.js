@@ -47,10 +47,12 @@
 
 
   window.addEventListener('focus', function() {
+    console.log('focused');
     // document.title = 'focused';
   });
 
   window.addEventListener('blur', function() {
+    console.log('blured');
     ws.onclose(); // WebSocket close
     console.log("clear timer");
     clearInterval(timerId);
