@@ -3,8 +3,6 @@
   var beta=0;
   var gamma=0;
 
-  var gyrojson=null;
-
   var createJSON  = function(){
      return {'beta':beta,'gamma':gamma,'alpha':alpha};
   }
@@ -14,6 +12,7 @@
     console.log("ws opened");
     setInterval(function() {
       var gyrojson = createJSON(ws);
+      console.log("gyrojson ",JSON.stringify(gyrojson));
       if (ws.bufferedAmount == 0){
         console("sending: "+JSON.stringify(gyrojson));
         ws.send(JSON.stringify(gyrojson));
