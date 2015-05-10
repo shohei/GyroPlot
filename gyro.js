@@ -3,9 +3,9 @@
   var beta=0;
   var gamma=0;
 
-  var createAndSendJSON  = function(ws){
+  var createAndSendJSON  = function(_ws){
     var gyrojson = {'beta':beta,'gamma':gamma,'alpha':alpha};
-    ws.send(JSON.stringify(gyrojson));
+    _ws.send(JSON.stringify(gyrojson));
   }
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
@@ -13,9 +13,10 @@
     console.log("ws opened");
     setInterval(function() {
       if (ws.bufferedAmount == 0){
+        console("sending ",JSON.stringify(gyrojson));
         createAndSendJSON(ws);
       }
-    }, 50);
+    }, 100);
   }
 
   ws.onmessage = function(message){
