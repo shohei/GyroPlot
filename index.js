@@ -9,13 +9,12 @@
     ws.send(JSON.stringify(gyrojson));
   }
 
-
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   ws.onopen = function(){
     console.log("ws opened");
   }
   setInterval(function() {
-    if (socket.bufferedAmount == 0){
+    if (ws.bufferedAmount == 0){
       createAndSendJSON(ws);
     }
   }, 50);
