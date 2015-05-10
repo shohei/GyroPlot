@@ -65,7 +65,7 @@
     console.log("ws opened");
   }
   ws.onmessage = function(message){
-    //console.log("incoming message ",message);
+    console.log("incoming message ",message);
 
     gyrojson = JSON.parse(message);
     var beta = gyrojson.beta;
