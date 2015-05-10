@@ -11,6 +11,7 @@
   var sendJSON = function(ws){
     var gyrojson = createJSON();
     console.log("gyrojson ",JSON.stringify(gyrojson));
+    console.log("ws.bufferedAmount: ",ws.bufferedAmount);
     if (ws.bufferedAmount == 0){
       ws.send(JSON.stringify(gyrojson));
     } 
