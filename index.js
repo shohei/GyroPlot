@@ -1,26 +1,30 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function() {
-  var alpha=0;
-  var beta=0;
-  var gamma=0;
+  // alpha=0;
+  // beta=0;
+  // gamma=0;
 
-  var gyrojson=null;
-
-  var createAndSendJSON  = function(_ws){
-     gyrojson = {'beta':beta,'gamma':gamma,'alpha':alpha};
-     console("created: "+JSON.stringify(gyrojson));
-    _ws.send(JSON.stringify(gyrojson));
-  }
+  // var createJSON  = function(){
+  //   var json = {'beta':beta,'gamma':gamma,'alpha':alpha};
+  //   return json;  
+  // }
+  //
+  // var sendJSON = function(ws){
+  //   var gyrojson = createJSON();
+  //   console.log("gyrojson ",JSON.stringify(gyrojson));
+  //   console.log("ws.bufferedAmount: ",ws.bufferedAmount);
+  //   if (ws.bufferedAmount == 0){
+  //     ws.send(JSON.stringify(gyrojson));
+  //   } 
+  //   setTimeout(function(){
+  //     sendJSON();
+  //   },100);
+  // }
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   ws.onopen = function(){
     console.log("ws opened");
-    setInterval(function() {
-      if (ws.bufferedAmount == 0 && gyrojson != null){
-        console("sending: "+JSON.stringify(gyrojson));
-        createAndSendJSON(ws);
-      }
-    }, 100);
+    // sendJSON(ws);
   }
 
   ws.onmessage = function(message){
@@ -50,11 +54,12 @@
   function deviceorientationHandler(event) {
     //ジャイロセンサー情報取得
     // X軸
-    beta = event.beta;
+    var beta = event.beta;
     // Y軸
-    gamma = event.gamma;
+    var gamma = event.gamma;
     // Z軸
-    alpha = event.alpha;
+    var alpha = event.alpha;
+    console.log(ws.bufferedAmount);
     var html = "";
     html += "X回転 : " + beta + "<br>";
     html += "Y回転 : " + gamma + "<br>";
