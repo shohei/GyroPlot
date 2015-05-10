@@ -101,7 +101,7 @@
   ws.onmessage = function(message){
     console.log("incoming message ",message.data);
 
-    var gyrojson = message.data;
+    var gyrojson = JSON.parse(message.data);
     var beta = gyrojson.beta;
     var gamma = gyrojson.gamma;
     var alpha = gyrojson.alpha;
