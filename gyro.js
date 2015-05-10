@@ -26,7 +26,8 @@
     console.log("ws opened");
     ws_is_connected=true;
     setInterval(function(){
-      console.log('hello');
+      ws.send(JSON.stringify(gyrojson)); 
+      // console.log('hello');
     },1000);
     // sendJSON(ws);
   }
@@ -65,6 +66,7 @@
     var gamma = event.gamma;
     // Z軸
     var alpha = event.alpha;
+    gyrojson = {'alpha':alpha,'beta':beta,'gamma':gamma};
     if(ws_is_connected && ws.bufferedAmount ==0){
       ws.send(JSON.stringify({'alpha':alpha,'beta':beta,'gamma':gamma}));
     };
