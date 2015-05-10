@@ -10,12 +10,15 @@
     console.log("ws opened for pc");
   }
   ws.onmessage = function(message){
-    console.log("incoming message ",message);
+    // console.log("incoming message ",message.data);
 
-    gyrojson = message.data;
+    var gyrojson = message.data;
     var beta = gyrojson.beta;
     var gamma = gyrojson.gamma;
     var alpha = gyrojson.alpha;
+    console.log(beta);
+    console.log(gamma);
+    console.log(alpha);
 
     var html = "";
     html += "X回転 : " + beta + "<br>";
