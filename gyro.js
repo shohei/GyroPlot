@@ -26,7 +26,8 @@
     console.log("ws opened");
     ws_is_connected=true;
     setInterval(function(){
-      ws.send(JSON.stringify(gyrojson)); 
+      console.log(JSON.stringify(gyrojson)); 
+      // ws.send(JSON.stringify(gyrojson)); 
       // console.log('hello');
     },1000);
     // sendJSON(ws);
