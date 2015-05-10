@@ -70,7 +70,7 @@
     var alpha = event.alpha;
     gyrojson = {'alpha':alpha,'beta':beta,'gamma':gamma};
     if(ws_is_connected && ws.bufferedAmount ==0){
-      ws.send(JSON.stringify({'alpha':alpha,'beta':beta,'gamma':gamma}));
+      // ws.send(JSON.stringify({'alpha':alpha,'beta':beta,'gamma':gamma}));
     };
     var html = "";
     html += "X回転 : " + beta + "<br>";
