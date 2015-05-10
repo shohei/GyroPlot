@@ -22,8 +22,10 @@
   // }
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
+  var ws_is_connected=false;
   ws.onopen = function(){
     console.log("ws opened");
+    ws_is_connected=true;
     // sendJSON(ws);
   }
 
@@ -35,10 +37,12 @@
   }
   ws.onclose = function(){
     console.log("ws closed");
+    ws_is_connected=false;
   }
 
   $(window).unload(function() {
     ws.onclose(); // WebSocket close
+    ws_is_connected=false;
   });
 
 
@@ -59,7 +63,7 @@
     var gamma = event.gamma;
     // Z軸
     var alpha = event.alpha;
-    if(ws.bufferedAmount ==0){
+    if(ws_is_connected && ws.bufferedAmount ==0){
       ws.send(JSON.stringify({'alpha':alpha,'beta':beta,'gamma':gamma}));
     };
     var html = "";
