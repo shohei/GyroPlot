@@ -42,7 +42,11 @@ var _ua = (function(u){
 },{}],3:[function(require,module,exports){
 require('./ua');
 if(_ua.Mobile){
+  console.log("mobile");
   require('./gyro');
+} else {
+  console.log("not mobile");
 }
+
 
 },{"./gyro":1,"./ua":2}]},{},[3]);
