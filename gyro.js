@@ -25,6 +25,9 @@
   ws.onopen = function(){
     console.log("ws opened");
     ws_is_connected=true;
+    setInterval(function(){
+      console.log('hello');
+    },1000);
     // sendJSON(ws);
   }
 
