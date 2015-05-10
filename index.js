@@ -148,6 +148,7 @@ if(_ua.Mobile){
   require('./gyro');
 } else {
   console.log("not mobile");
+  console.log('hogehoe');
   require('./pc');
 }
 
