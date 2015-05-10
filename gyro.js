@@ -5,17 +5,16 @@
 
   var gyrojson=null;
 
-  var createJSON  = function(_ws){
-     gyrojson = {'beta':beta,'gamma':gamma,'alpha':alpha};
-     console("created: "+JSON.stringify(gyrojson));
+  var createJSON  = function(){
+     return {'beta':beta,'gamma':gamma,'alpha':alpha};
   }
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   ws.onopen = function(){
     console.log("ws opened");
     setInterval(function() {
-      createJSON(ws);
-      if (ws.bufferedAmount == 0 && gyrojson != null){
+      var gyrojson = createJSON(ws);
+      if (ws.bufferedAmount == 0){
         console("sending: "+JSON.stringify(gyrojson));
         ws.send(JSON.stringify(gyrojson));
       } else {
