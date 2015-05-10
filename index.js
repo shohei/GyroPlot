@@ -23,7 +23,7 @@
   }
 
   $(window).unload(function() {
-    ws.onclose(); // WebSocket close
+    ws.close(); // WebSocket close
     ws_is_connected=false;
   });
 
