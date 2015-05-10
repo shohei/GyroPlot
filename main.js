@@ -5,5 +5,6 @@ if(_ua.Mobile){
   require('./gyro');
 } else {
   console.log("not mobile");
+  require('./pc');
 }
 
