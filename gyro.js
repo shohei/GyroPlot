@@ -3,8 +3,10 @@
   var beta=0;
   var gamma=0;
 
+  var gyrojson;
+
   var createAndSendJSON  = function(_ws){
-    var gyrojson = {'beta':beta,'gamma':gamma,'alpha':alpha};
+     gyrojson = {'beta':beta,'gamma':gamma,'alpha':alpha};
     _ws.send(JSON.stringify(gyrojson));
   }
 
