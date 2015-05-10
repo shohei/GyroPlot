@@ -16,9 +16,9 @@
     var beta = gyrojson.beta;
     var gamma = gyrojson.gamma;
     var alpha = gyrojson.alpha;
-    console.log(beta);
-    console.log(gamma);
-    console.log(alpha);
+    // console.log(beta);
+    // console.log(gamma);
+    // console.log(alpha);
 
     var html = "";
     html += "X回転 : " + beta + "<br>";
