@@ -25,6 +25,7 @@
 
   $(window).unload(function() {
     ws.onclose(); // WebSocket close
+    console.log("clear timer");
     clearInterval(timerId);
     ws_is_connected=false;
   });
