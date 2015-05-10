@@ -40,7 +40,7 @@ exports.ua = function(u){
 };
 
 },{}],3:[function(require,module,exports){
-require('./ua');
+var ua =require('./ua');
 var _ua = ua(window.navigator.userAgent.toLowerCase());
 if(_ua.Mobile){
   console.log("mobile");
