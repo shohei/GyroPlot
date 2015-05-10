@@ -1,1 +1,4 @@
-var gyro = require('./gyro');
+require('./ua');
+if(_ua.Mobile){
+  require('./gyro');
+}
