@@ -4,7 +4,8 @@
   gamma=0;
 
   var createJSON  = function(){
-     return {'beta':beta,'gamma':gamma,'alpha':alpha};
+     var json = {'beta':beta,'gamma':gamma,'alpha':alpha};
+     return json;  
   }
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
