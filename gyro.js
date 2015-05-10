@@ -11,7 +11,7 @@
   ws.onopen = function(){
     console.log("ws opened");
     setInterval(function() {
-      var gyrojson = createJSON(ws);
+      var gyrojson = createJSON();
       console.log("gyrojson ",JSON.stringify(gyrojson));
       if (ws.bufferedAmount == 0){
         console("sending: "+JSON.stringify(gyrojson));
