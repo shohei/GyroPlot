@@ -1,29 +1,29 @@
 (function() {
-  alpha=0;
-  beta=0;
-  gamma=0;
+  // alpha=0;
+  // beta=0;
+  // gamma=0;
 
-  var createJSON  = function(){
-    var json = {'beta':beta,'gamma':gamma,'alpha':alpha};
-    return json;  
-  }
-
-  var sendJSON = function(ws){
-    var gyrojson = createJSON();
-    console.log("gyrojson ",JSON.stringify(gyrojson));
-    console.log("ws.bufferedAmount: ",ws.bufferedAmount);
-    if (ws.bufferedAmount == 0){
-      ws.send(JSON.stringify(gyrojson));
-    } 
-    setTimeout(function(){
-      sendJSON();
-    },100);
-  }
+  // var createJSON  = function(){
+  //   var json = {'beta':beta,'gamma':gamma,'alpha':alpha};
+  //   return json;  
+  // }
+  //
+  // var sendJSON = function(ws){
+  //   var gyrojson = createJSON();
+  //   console.log("gyrojson ",JSON.stringify(gyrojson));
+  //   console.log("ws.bufferedAmount: ",ws.bufferedAmount);
+  //   if (ws.bufferedAmount == 0){
+  //     ws.send(JSON.stringify(gyrojson));
+  //   } 
+  //   setTimeout(function(){
+  //     sendJSON();
+  //   },100);
+  // }
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   ws.onopen = function(){
     console.log("ws opened");
-    sendJSON(ws);
+    // sendJSON(ws);
   }
 
   ws.onmessage = function(message){
@@ -53,11 +53,12 @@
   function deviceorientationHandler(event) {
     //ジャイロセンサー情報取得
     // X軸
-    beta = event.beta;
+    var beta = event.beta;
     // Y軸
-    gamma = event.gamma;
+    var gamma = event.gamma;
     // Z軸
-    alpha = event.alpha;
+    var alpha = event.alpha;
+    console.log(ws.bufferedAmount);
     var html = "";
     html += "X回転 : " + beta + "<br>";
     html += "Y回転 : " + gamma + "<br>";
