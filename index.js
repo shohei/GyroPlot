@@ -95,7 +95,7 @@
 
   var ws = new WebSocket("ws://heroku-echo.herokuapp.com");
   ws.onopen = function(){
-    console.log("ws opened");
+    console.log("ws opened for pc");
   }
   ws.onmessage = function(message){
     console.log("incoming message ",message);
